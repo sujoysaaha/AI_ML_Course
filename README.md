@@ -32,8 +32,8 @@ This project aims to implement multiple machine learning classification models t
 | XGBoost              | High accuracy; robust gradient boosting method.                         |
 
 # Streamlit App Features
-- Upload dataset (CSV) for testing : Please use this data [ else format mismatch might happen ]
-- 	https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data
--	Select ML model from dropdown
--	Display metrics: Accuracy, AUC, Precision, Recall, F1 Score, MCC
--	Visualize Confusion Matrix
+- Upload dataset (CSV) for testing: Please use this data [else format mismatch might happen]  
+  - [Breast Cancer Wisconsin (Diagnostic) Dataset](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data)
+- Select ML model from dropdown
+- Display metrics: Accuracy, AUC, Precision, Recall, F1 Score, MCC
+- Visualize Confusion Matrix
