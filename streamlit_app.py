@@ -48,8 +48,12 @@ uploaded_file = st.file_uploader("Upload Test Dataset (CSV)", type=["csv"])
 if uploaded_file:
     data = pd.read_csv(uploaded_file)
 
-    X = data.drop("target", axis=1)
-    y = data["target"]
+    if "diagnosis" not in data.columns:
+        st.error("CSV must contain 'diagnosis' column.")
+        st.stop()
+
+    X = data.drop("diagnosis", axis=1)
+    y = data["diagnosis"].map({"M": 0, "B": 1})
 
     X_scaled = scaler.transform(X)
     predictions = model.predict(X_scaled)
@@ -59,12 +63,7 @@ if uploaded_file:
 
     st.subheader("Confusion Matrix")
     cm = confusion_matrix(y, predictions)
-
-    fig, ax = plt.subplots()
-    ax.imshow(cm)
-    ax.set_xlabel("Predicted")
-    ax.set_ylabel("Actual")
-    st.pyplot(fig)
+    st.write(cm)
 
 
 # In[ ]:
@@ -74,6 +73,7 @@ print("completed")
 
 
 # In[ ]:
+
 
 
 
