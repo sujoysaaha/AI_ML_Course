@@ -4,11 +4,17 @@ This project aims to implement multiple machine learning classification models t
 
 # Dataset Description
 •	Source: https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data
+
 •	Breast Cancer Wisconsin (Diagnostic) dataset
+
 •	Number of Instances: 569
+
 •	Number of Features: 30 numeric features (diagnostic measurements)
+
 •	Target Variable: diagnosis (M = Malignant, B = Benign)
+
 •	Dataset Characteristics:
+
 o	Features include radius, texture, perimeter, area, smoothness, compactness, concavity, concave points, symmetry, fractal dimension (mean, standard error, worst).
 
 # Models Used & Evaluation Metrics
