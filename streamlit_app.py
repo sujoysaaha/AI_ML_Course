@@ -43,41 +43,60 @@ uploaded_file = st.file_uploader("Upload Test Dataset (CSV)", type=["csv"])
 # In[ ]:
 
 
-# Inference/ Usecase
-
+# ----------------------------
+# Inference / Usecase
+# ----------------------------
 if uploaded_file:
+
     data = pd.read_csv(uploaded_file)
 
+    # Remove unnecessary columns
+    data = data.drop(columns=["id"], errors="ignore")
+    data = data.loc[:, ~data.columns.str.contains("^Unnamed")]
+
+    # Check target column
     if "diagnosis" not in data.columns:
         st.error("CSV must contain 'diagnosis' column.")
         st.stop()
 
-    # Remove unwanted columns
-    data = data.drop(columns=["id", "diagnosis"], errors="ignore")
-    
+    # Extract target BEFORE dropping
+    y = data["diagnosis"].str.upper().map({"M": 0, "B": 1})
+
+    # Extract features
     X = data.drop("diagnosis", axis=1)
-    y = data["diagnosis"].map({"M": 0, "B": 1})
-    
+
+    # Scale features (important since you trained manually)
     X_scaled = scaler.transform(X)
+
+    # Predict
     predictions = model.predict(X_scaled)
 
+    # Display Classification Report
     st.subheader("Classification Report")
     st.text(classification_report(y, predictions))
 
+    # Display Confusion Matrix
     st.subheader("Confusion Matrix")
+
     cm = confusion_matrix(y, predictions)
-    st.write(cm)
+
+    fig, ax = plt.subplots()
+    ax.imshow(cm)
+
+    ax.set_xlabel("Predicted Label")
+    ax.set_ylabel("True Label")
+    ax.set_xticks([0, 1])
+    ax.set_yticks([0, 1])
+
+    # Show numbers inside matrix
+    for i in range(len(cm)):
+        for j in range(len(cm)):
+            ax.text(j, i, cm[i, j], ha="center", va="center")
+
+    st.pyplot(fig)
 
 
 # In[ ]:
-
-
-print("completed")
-
-
-# In[ ]:
-
-
 
 
 
