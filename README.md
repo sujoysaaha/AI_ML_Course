@@ -3,19 +3,13 @@ Implement multiple classification models - Build an interactive Streamlit web ap
 This project aims to implement multiple machine learning classification models to predict whether a tumour is malignant or benign using the Breast Cancer dataset.
 
 # Dataset Description
-•	Source: https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data
-
-•	Breast Cancer Wisconsin (Diagnostic) dataset
-
-•	Number of Instances: 569
-
-•	Number of Features: 30 numeric features (diagnostic measurements)
-
-•	Target Variable: diagnosis (M = Malignant, B = Benign)
-
-•	Dataset Characteristics:
-
-o	Features include radius, texture, perimeter, area, smoothness, compactness, concavity, concave points, symmetry, fractal dimension (mean, standard error, worst).
+- Source: [Kaggle Dataset](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data)
+- Dataset Name: Breast Cancer Wisconsin (Diagnostic) dataset
+- Number of Instances: 569
+- Number of Features: 30 numeric features (diagnostic measurements)
+- Target Variable: `diagnosis` (M = Malignant, B = Benign)
+- Dataset Characteristics:
+  - Features include radius, texture, perimeter, area, smoothness, compactness, concavity, concave points, symmetry, fractal dimension (mean, standard error, worst)
 
 # Models Used & Evaluation Metrics
 | ML Model Name        | Accuracy  | AUC       | Precision | Recall    | F1        | MCC       |
@@ -38,8 +32,8 @@ o	Features include radius, texture, perimeter, area, smoothness, compactness, co
 | XGBoost              | High accuracy; robust gradient boosting method.                         |
 
 # Streamlit App Features
-•	Upload dataset (CSV) for testing : Please use this data [ else format mismatch might happen ]
-o	https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data
-•	Select ML model from dropdown
-•	Display metrics: Accuracy, AUC, Precision, Recall, F1 Score, MCC
-•	Visualize Confusion Matrix
+- Upload dataset (CSV) for testing : Please use this data [ else format mismatch might happen ]
+- 	https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data
+-	Select ML model from dropdown
+-	Display metrics: Accuracy, AUC, Precision, Recall, F1 Score, MCC
+-	Visualize Confusion Matrix
