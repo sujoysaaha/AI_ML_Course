@@ -52,9 +52,12 @@ if uploaded_file:
         st.error("CSV must contain 'diagnosis' column.")
         st.stop()
 
+    # Remove unwanted columns
+    data = data.drop(columns=["id", "diagnosis"], errors="ignore")
+    
     X = data.drop("diagnosis", axis=1)
     y = data["diagnosis"].map({"M": 0, "B": 1})
-
+    
     X_scaled = scaler.transform(X)
     predictions = model.predict(X_scaled)
 
@@ -73,6 +76,7 @@ print("completed")
 
 
 # In[ ]:
+
 
 
 
